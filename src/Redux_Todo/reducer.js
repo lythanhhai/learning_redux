@@ -2,7 +2,7 @@ const initState = {
     todos: []
 }
 
-const reducer = (state =initState, action) => {
+const reducerTodo = (state =initState, action) => {
     switch(action.type)
     {
         case "add_todo":
@@ -16,4 +16,4 @@ const reducer = (state =initState, action) => {
     //return state
 }
 
-export default reducer
+export default reducerTodo
