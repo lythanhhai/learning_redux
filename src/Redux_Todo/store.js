@@ -1,8 +1,8 @@
-import { createStore, combineReducers } from "redux";
+import { combineReducers } from "redux";
 import reducerTodo from "./reducer";
 
 const combine = combineReducers({
-    reducerTodo: reducerTodo
-})
+  reducerTodo: reducerTodo,
+});
 
-export default combine
+export default combine;
