@@ -25,26 +25,29 @@ const reducerTodo = (state = initState, action) => {
     //   const newTodos_edit = state.todos.map((todo, index) => {
     //     return todo.id === action.payload.id ? todo.value = action.payload.value : todo;
     //   });
-      const newTodos_edit = [];
-      for (let i = 0; i < state.todos.length; i++) {
-        if (state.todos[i].id === action.payload.id) {
-            newTodos_edit.push({value: action.payload.value, id: action.payload.id});
-        } else {
-            newTodos_edit.push(state.todos[i]);
-        }
-      }
+      const newTodos_edit = [...state.todos];
+      // for (let i = 0; i < state.todos.length; i++) {
+      //   if (state.todos[i].id === action.payload.id) {
+      //       newTodos_edit.push({value: action.payload.value, id: action.payload.id});
+      //   } else {
+      //       newTodos_edit.push(state.todos[i]);
+      //   }
+      // }
+      newTodos_edit[action.payload.id] = {value: action.payload.value, id: action.payload.id}
       return {
         ...state,
         todos: newTodos_edit,
       };
     case "delete_todo": // xoa truoc
-      const newTodos_delete = [];
-      for (let i = 0; i < state.todos.length; i++) {
-        if (state.todos[i].id === action.payload) {
-        } else {
-          newTodos_delete.push(state.todos[i]);
-        }
-      }
+      const newTodos_delete = [...state.todos];
+      // for (let i = 0; i < state.todos.length; i++) {
+      //   if (state.todos[i].id === action.payload) {
+      //   } else {
+      //     newTodos_delete.push(state.todos[i]);
+      //   }
+      // }
+      //newTodos_delete = state.todos.filter((value, index) => {return index === action.payload})
+      newTodos_delete.splice(action.payload, action.payload + 1)
       return {
         ...state,
         todos: newTodos_delete,
