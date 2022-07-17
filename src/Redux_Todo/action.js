@@ -25,4 +25,9 @@ const DeleteAction = (id) => {
   };
 };
 
+const fetchData = () => async (dispatch) => {
+  // const res = await axios.get()
+  // return dispatch()
+}
+
 export { AddAction, EditAction, DeleteAction };

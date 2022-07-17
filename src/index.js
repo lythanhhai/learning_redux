@@ -4,9 +4,21 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { Provider } from "react-redux";
-import { createStore } from "redux";
+import { applyMiddleware, createStore } from "redux";
+import thunk from "redux-thunk";
 import combine from "./Redux_Todo/store.js";
-let store = createStore(combine);
+
+// middleware 
+const myMiddleWare = store => next => action => {
+  console.log(action.type + " " + action.payload.value)
+  if(action.type === "add_todo" && action.payload.value === "fuck")
+  {
+    action.payload.value = "****"
+  }
+  return next(action)
+}
+
+let store = createStore(combine, applyMiddleware(myMiddleWare, thunk));
 ReactDOM.render(
   <Provider store={store}>
     <App />

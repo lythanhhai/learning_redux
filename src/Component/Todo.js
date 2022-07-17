@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { AddAction, EditAction, DeleteAction } from "../Redux_Todo/action";
+import axios from 'axios'
 
 const Todo = () => {
   const [value, setValue] = useState("");
@@ -26,7 +27,7 @@ const Todo = () => {
       {todos.map((todo, index) => {
         return (
           <li key={index}>
-            {todo.value}
+            {todo.value}  
             <button
               type="button"
               onClick={() => {
